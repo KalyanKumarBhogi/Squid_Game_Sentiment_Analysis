@@ -101,5 +101,7 @@ print("Neutral: ", z) </p>
 
 ![image](https://github.com/KalyanKumarBhogi/Squid_Game_Sentiment_Analysis/assets/144279085/10c875c8-ba4f-40be-8ff0-bddeae162b7c)
 
-# Summary <p>
-The total of negatives is much lower than that of Positive, so we can say that most of the opinions on the Squid Game are positive.
+The total of negatives is much lower than that of Positives, so most opinions on the Squid Game are positive.
+
+# Conclusion
+The sentiment analysis of tweets related to Squid Game reveals that the majority of opinions expressed on Twitter are categorized as neutral, with a notable balance between positive and negative sentiments. The dataset, collected from Twitter users sharing their views on the trending Netflix show, was preprocessed to clean and prepare the text for analysis. The word cloud visualization highlighted frequently used words in the opinions. Utilizing sentiment intensity analysis, the calculated scores resulted in a dominance of neutral sentiments. While positive and negative sentiments exist, the overall sentiment landscape suggests a diverse range of opinions among viewers, contributing to the show's widespread popularity and generating varied reactions on social media.
