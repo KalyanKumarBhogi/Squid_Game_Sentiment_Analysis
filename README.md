@@ -1,6 +1,6 @@
 # Squid_Game_Sentiment_Analysis
 
-The Squid Game is currently one of the most trending shows on Netflix. It is so much trending that people who have never watched any web series before are also watching it. One of the reasons behind this is the reviews and opinions of viewers on social media. So this is how I got interest in doing sentimental analysis on Squid Ga,e.
+The Squid Game is currently one of the most trending shows on Netflix. It is so much trending that people who have never watched any web series before are also watching it. One of the reasons behind this is the reviews and opinions of viewers on social media. So this is how I got interest in doing sentimental analysis on Squid Game.
 
 ## Squid Game Sentiment Analysis using Python
 
@@ -12,6 +12,12 @@ import matplotlib.pyplot as plt </p>
 from nltk.sentiment.vader import SentimentIntensityAnalyzer </p>
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator </p>
 
+data = pd.read_csv("tweets_v8.csv")
+print(data.head())
+
+![image](https://github.com/KalyanKumarBhogi/Squid_Game_Sentiment_Analysis/assets/144279085/4e4e9506-6224-4724-96b7-6ffcf590c1db)
+![image](https://github.com/KalyanKumarBhogi/Squid_Game_Sentiment_Analysis/assets/144279085/c5c10f46-bd06-4026-b6c4-f9dd29cfb598)
+
 ### In first impressions of this dataset, I noticed null values in the “user_location” column that seem to not affect the sentiment analysis task. So I will drop this column:
 
 data = data.drop(columns="user_location", axis=1) </p>
@@ -19,6 +25,8 @@ data = data.drop(columns="user_location", axis=1) </p>
 ### Now let’s have a look at whether other columns contain any null values or not:
 
 print(data.isnull().sum()) </p>
+
+![image](https://github.com/KalyanKumarBhogi/Squid_Game_Sentiment_Analysis/assets/144279085/6521f33b-d1eb-44b5-a3e9-8cf0d4efa78f)
 
 ### The “text” column in the dataset contains the opinions of the users of Twitter about the squid game, as these are social media opinions, so this column needs to be prepared before any analysis. So let’s prepare this column for the task of sentiment analysis:
 
@@ -55,6 +63,8 @@ plt.imshow(wordcloud, interpolation='bilinear')  </p>
 plt.axis("off") </p>
 plt.show() </p>
 
+![image](https://github.com/KalyanKumarBhogi/Squid_Game_Sentiment_Analysis/assets/144279085/f9758240-98fe-4696-a6ac-fed3705058fd)
+
 ### Now let’s move to the task of Squid Game sentiment analysis. Here I will add three more columns in this dataset as Positive, Negative, and Neutral by calculating the sentiment scores of the text column:
 
 nltk.download('vader_lexicon') </p>
@@ -64,6 +74,8 @@ data["Negative"] = [sentiments.polarity_scores(i)["neg"] for i in data["text"]] 
 data["Neutral"] = [sentiments.polarity_scores(i)["neu"] for i in data["text"]] </p>
 data = data[["text", "Positive", "Negative", "Neutral"]] </p>
 print(data.head()) </p>
+
+![image](https://github.com/KalyanKumarBhogi/Squid_Game_Sentiment_Analysis/assets/144279085/b2be0781-9f0a-401f-a666-96424f7e0146)
 
 ### Now let’s calculate how most people think about the Squid Game:
 
@@ -80,8 +92,14 @@ def sentiment_score(a, b, c): </p>
         print("Neutral 🙂 ") </p>
 sentiment_score(x, y, z) </p>
 
+![image](https://github.com/KalyanKumarBhogi/Squid_Game_Sentiment_Analysis/assets/144279085/7a22ea22-4bcd-4f91-8082-814c91b9ba3f)
+
 ### So most of the opinions of the users are Neutral, now let’s have a look at the total of each sentiment score before making any conclusion:
 print("Positive: ", x) </p>
 print("Negative: ", y) </p>
 print("Neutral: ", z) </p>
 
+![image](https://github.com/KalyanKumarBhogi/Squid_Game_Sentiment_Analysis/assets/144279085/10c875c8-ba4f-40be-8ff0-bddeae162b7c)
+
+# Summary <p>
+The total of negatives is much lower than that of Positive, so we can say that most of the opinions on the Squid Game are positive.
